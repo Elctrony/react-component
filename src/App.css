@@ -27,6 +27,29 @@ html, body {
   padding: 0;
 }
 
+/* Content Area Styles */
+.content-area {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  text-align: center;
+  margin: 20px;
+}
+
+.content-area h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.content-area p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .view-selector {
   display: flex;
   justify-content: center;

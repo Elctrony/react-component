@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
-import LaneMonitor from './LaneMonitor';
 import './Dashboard.css';
 
 const Dashboard = () => {
-    const [activeView, setActiveView] = useState('dashboard');
     const [isRecording, setIsRecording] = useState(false);
     const [recordingTime, setRecordingTime] = useState(0);
 
@@ -50,7 +48,7 @@ const Dashboard = () => {
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
-    const renderDashboardContent = () => (
+    return (
         <div className="dashboard-content">
             <div className="dashboard-header">
                 <h1>DASHBOARD</h1>
@@ -187,84 +185,6 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    );
-
-    const renderLogicalLanesContent = () => (
-        <div className="content-area">
-            <h2>Logical Lanes</h2>
-            <LaneMonitor />
-        </div>
-    );
-
-    const renderFrameAlignmentContent = () => (
-        <div className="content-area">
-            <h2>Frame Alignment</h2>
-            <p>Frame alignment analysis and configuration.</p>
-        </div>
-    );
-
-    const renderMultiframeContent = () => (
-        <div className="content-area">
-            <h2>Multiframe</h2>
-            <p>Multiframe processing and analysis tools.</p>
-        </div>
-    );
-
-    const renderContent = () => {
-        switch (activeView) {
-            case 'dashboard':
-                return renderDashboardContent();
-            case 'logical-lanes':
-                return renderLogicalLanesContent();
-            case 'frame-alignment':
-                return renderFrameAlignmentContent();
-            case 'multiframe':
-                return renderMultiframeContent();
-            default:
-                return renderDashboardContent();
-        }
-    };
-
-    return (
-        <div className="dashboard-container">
-            {/* Left Sidebar */}
-            <div className="sidebar">
-                <div className="sidebar-header">
-                    <h2>OTN DUT ANALYZER</h2>
-                </div>
-                <nav className="sidebar-nav">
-                    <button 
-                        className={`nav-item ${activeView === 'dashboard' ? 'active' : ''}`}
-                        onClick={() => setActiveView('dashboard')}
-                    >
-                        Dashboard
-                    </button>
-                    <button 
-                        className={`nav-item ${activeView === 'logical-lanes' ? 'active' : ''}`}
-                        onClick={() => setActiveView('logical-lanes')}
-                    >
-                        Logical Lanes
-                    </button>
-                    <button 
-                        className={`nav-item ${activeView === 'frame-alignment' ? 'active' : ''}`}
-                        onClick={() => setActiveView('frame-alignment')}
-                    >
-                        Frame Alignment
-                    </button>
-                    <button 
-                        className={`nav-item ${activeView === 'multiframe' ? 'active' : ''}`}
-                        onClick={() => setActiveView('multiframe')}
-                    >
-                        Multiframe
-                    </button>
-                </nav>
-            </div>
-
-            {/* Main Content Area */}
-            <div className="main-content">
-                {renderContent()}
             </div>
         </div>
     );
